@@ -1,0 +1,13 @@
+html, body{
+	height: 100%;
+	font-family: Arial; 
+}
+body{
+	width:900px;
+	margin: 0 auto;
+}
+input{
+	&.form-control{
+		width:200px;
+	}
+}
