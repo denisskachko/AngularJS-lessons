@@ -16,6 +16,7 @@
 	    	}
 	    	$scope.contentIsShow = !$scope.contentIsShow;	
 	    }
+      $scope.showContent();
 
 
         $scope.showModal = false;
