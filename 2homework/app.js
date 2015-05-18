@@ -19,9 +19,11 @@
 
 
         $scope.showModal = false;
+        $scope.titleWindow = null;
         $scope.showCustomModal = function(men){
             $scope.showModal = !$scope.showModal;
             $scope.men = men;
+            $scope.titleWindow = men.firstName + ' ' + men.lastName;
         };	
         $scope.showLastMen = function(lastMen){
             $scope.lastMenIsSubmite = true;
@@ -51,7 +53,6 @@
                replace:true,
                scope:true,
                link: function postLink(scope, element, attrs) {
-                   scope.title=attrs.header;
                    scope.buttonOk=attrs.oktext;
                    scope.buttonCancel=attrs.canceltext;
 
@@ -61,6 +62,9 @@
                         }else{
                             $(element).modal('hide');    
                         }
+                   });
+                   scope.$watch(attrs.header, function(value){
+                        scope.title = value;
                    });
 
                    $(element).on('shown.bs.modal', function(){
