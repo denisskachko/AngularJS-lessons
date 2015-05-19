@@ -29,26 +29,29 @@
         $scope.showLastMen = function(lastMen){
             $scope.lastMenIsSubmite = true;
             $scope.lastMen = lastMen;
-        }    
+        } 
+        $scope.hideCustomModal = function(){
+            $scope.showModal = false;
+        }  
 	  });
 
     app.directive('customModal', function(){
            return{
                restrict: 'E',
-               template: '<div class="modal fade">' + 
+               template: '<div class="modal customModal" ng-show="showModal">' + 
                           '<div class="modal-dialog">' + 
                             '<div class="modal-content">' + 
                               '<div class="modal-header">' + 
-                                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="showLastMen(men)">&times;</button>' + 
+                                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="showLastMen(men); hideCustomModal()">&times;</button>' + 
                                 '<h4 class="modal-title">{{ title }}</h4>' + 
                               '</div>' + 
                               '<div class="modal-body" ng-transclude></div>' + 
                               '<div class="modal-footer">' +
-                                '<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showLastMen(men)">{{ buttonCancel }}</button>' +
+                                '<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showLastMen(men); hideCustomModal()">{{ buttonCancel }}</button>' +
                                 '<button type="button" class="btn btn-primary" ng-click="showLastMen(men)">{{ buttonOk }}</button>' +
                               '</div>' +
-                            '</div>' +                             
-                          '</div>' + 
+                            '</div>' +                        
+                          '</div>' +
                         '</div>',
                transclude:true,
                replace:true,
@@ -57,29 +60,12 @@
                    scope.buttonOk=attrs.oktext;
                    scope.buttonCancel=attrs.canceltext;
 
-                   scope.$watch(attrs.show, function(value){
-                        if(value == true){
-                            $(element).modal('show');
-                        }else{
-                            $(element).modal('hide');    
-                        }
-                   });
+                   
                    scope.$watch(attrs.header, function(value){
                         scope.title = value;
                    });
 
-                   $(element).on('shown.bs.modal', function(){
-                      scope.$apply(function(){
-                        scope.$parent[attrs.show] = true;
-                      });
-                    });
-
-
-                    $(element).on('hidden.bs.modal', function(){
-                      scope.$apply(function(){
-                        scope.$parent[attrs.show] = false;
-                      });
-                    });
+                   
 
                }
            }

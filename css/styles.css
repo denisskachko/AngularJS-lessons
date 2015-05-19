@@ -7,3 +7,6 @@ input.form-control { width: 200px; }
 .wrapper{
 	overflow: hidden;
 }
+.modal.customModal{
+	display: block;
+}
