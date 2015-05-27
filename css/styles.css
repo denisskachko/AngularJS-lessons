@@ -2,7 +2,7 @@ html, body { height: 100%; font-family: Arial; }
 
 body { width: 900px; margin: 0 auto; }
 
-input.form-control { width: 200px; }
+input.form-control.search { width: 200px; }
 
 .wrapper{
 	overflow: hidden;
@@ -10,3 +10,10 @@ input.form-control { width: 200px; }
 .modal.customModal{
 	display: block;
 }
+.ng-invalid.ng-dirty{
+	border-color: #ce0000;
+}
+.error{
+	color:#ce0000;
+}
+
