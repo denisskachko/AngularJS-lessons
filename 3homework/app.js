@@ -79,7 +79,6 @@
         $scope.updateMen = function(){            
             $scope.showValidationMessage = true;
             if($scope.updateForm.$invalid) {
-                alert(true);
                 return;
             };
             $scope.people[$scope.currentMenIndex] = angular.copy($scope.currentMen);
